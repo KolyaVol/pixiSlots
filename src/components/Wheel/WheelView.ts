@@ -14,9 +14,10 @@ export default class WheelView extends Container implements IWheelView {
     this.rootNode = rootNode;
   }
 
-  async drawItem(itemName: string, offsetY: number) {
+  async drawItem(itemName: string, offsetX: number, offsetY: number) {
     const texture = await Assets.load(itemName);
     const sprite = new Sprite(texture);
+    sprite.x = offsetX;
     sprite.y = offsetY;
     this.rootNode?.addChild(sprite);
   }
@@ -70,38 +71,38 @@ export default class WheelView extends Container implements IWheelView {
   //   this.#rootNode?.addChild(sprite);
   // }
 
-  async fillCell(el: number, offsetY: number) {
+  async fillCell(el: number, offsetX: number, offsetY: number) {
     switch (el) {
       case 1:
-        this.drawItem("cherry", offsetY);
+        this.drawItem("cherry", offsetX, offsetY);
         break;
 
       case 2:
-        this.drawItem("diamond", offsetY);
+        this.drawItem("diamond", offsetX, offsetY);
         break;
 
       case 3:
-        this.drawItem("goldBars", offsetY);
+        this.drawItem("goldBars", offsetX, offsetY);
         break;
 
       case 4:
-        this.drawItem("grape", offsetY);
+        this.drawItem("grape", offsetX, offsetY);
         break;
 
       case 5:
-        this.drawItem("lemon", offsetY);
+        this.drawItem("lemon", offsetX, offsetY);
         break;
 
       case 6:
-        this.drawItem("watermelon", offsetY);
+        this.drawItem("watermelon", offsetX, offsetY);
         break;
 
       case 7:
-        this.drawItem("wild", offsetY);
+        this.drawItem("wild", offsetX, offsetY);
         break;
 
       default:
-        this.drawItem("lemon", offsetY);
+        this.drawItem("lemon", offsetX, offsetY);
         break;
     }
   }

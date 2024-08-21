@@ -42,7 +42,7 @@ export default class Game {
   async createWheel() {
     let wheelFactory: WheelFactory | null = null;
     if (this.#pixiApp) {
-      wheelFactory = new WheelFactory(this.#pixiApp);
+      wheelFactory = new WheelFactory(this.#pixiApp, this.wheelsItems);
     }
     const wheel = wheelFactory?.createWheel();
     if (wheel) {

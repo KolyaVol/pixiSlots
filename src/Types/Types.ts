@@ -1,8 +1,8 @@
-import { Container } from "pixi.js";
+import { Application, Container } from "pixi.js";
 
 export interface IWheelView extends Container {
-  drawItem(itemName: string, offsetY: number): void;
-  fillCell(el: number, offsetY: number): void;
+  drawItem(itemName: string, offsetX: number, offsetY: number): void;
+  fillCell(el: number, offsetX: number, offsetY: number): void;
 }
 
 export interface IWheel extends Container {
@@ -11,5 +11,8 @@ export interface IWheel extends Container {
 }
 
 export interface IWheelFactory {
+  app: null | Application;
+  wheelsItems: Array<Array<number>>;
+
   createWheel(): IWheel;
 }
