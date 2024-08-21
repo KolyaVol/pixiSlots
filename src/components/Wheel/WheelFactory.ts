@@ -1,23 +1,18 @@
 import { Application, Graphics } from "pixi.js";
 import WheelView from "./WheelView";
 import Wheel from "./Wheel";
+import { IWheel, IWheelFactory } from "../../Types/Types";
 
-export default class WheelFactory {
+export default class WheelFactory implements IWheelFactory {
   app: null | Application;
   constructor(app: Application) {
     this.app = app;
   }
-  async createWheel() {
+  createWheel() {
     const wheelView = new WheelView();
-    await wheelView.drawCherry();
-    const wheel = new Wheel(wheelView);
-    // const gr = new Graphics();
-    // gr.rect(100, 100, 100, 100);
-    // gr.fill(0xff3300);
-    // this.app?.stage.addChild(gr);
+    const wheel: IWheel = new Wheel(wheelView);
     this.app?.stage.addChild(wheel);
-    console.log("wheel");
-
+    wheel.drawWheel();
     return wheel;
   }
 }

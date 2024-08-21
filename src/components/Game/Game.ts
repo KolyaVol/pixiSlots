@@ -1,7 +1,13 @@
 import { Application, Assets, Graphics, Sprite } from "pixi.js";
 import WheelFactory from "../Wheel/WheelFactory";
+import { IWheel } from "../../Types/Types";
 
 export default class Game {
+  wheels: Array<IWheel> = [];
+  wheelsItems: Array<Array<number>> = [
+    [1, 2, 3, 4, 5, 6, 7],
+    [1, 2, 3, 4, 5, 6, 7],
+  ];
   #pixiApp: null | Application = null;
   constructor() {}
 
@@ -26,8 +32,10 @@ export default class Game {
     // gr.rect(100, 100, 100, 100);
     // gr.fill(0xff3300);
     // this.#pixiApp.stage.addChild(gr);
-    console.log(this.#pixiApp.stage);
 
+    this.#pixiApp.ticker.add(() => {
+      this.wheels.forEach((wheel) => wheel.update());
+    });
     this.#pixiApp.ticker.start();
   }
 
@@ -36,6 +44,9 @@ export default class Game {
     if (this.#pixiApp) {
       wheelFactory = new WheelFactory(this.#pixiApp);
     }
-    wheelFactory?.createWheel();
+    const wheel = wheelFactory?.createWheel();
+    if (wheel) {
+      this.wheels.push(wheel);
+    }
   }
 }
