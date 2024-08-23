@@ -10,11 +10,21 @@ export default class WheelFactory implements IWheelFactory {
     this.app = app;
     this.wheelsItems = wheelsItems;
   }
-  createWheel() {
+
+  createWheel(x: number) {
     const wheelView = new WheelView();
-    const wheel: IWheel = new Wheel(wheelView, this.wheelsItems);
+    const wheel: IWheel = new Wheel(wheelView, this.wheelsItems[x], this.app, x);
     this.app?.stage.addChild(wheel);
+
     wheel.drawWheel();
     return wheel;
+  }
+
+  createWheels() {
+    let arr = this.wheelsItems.map((arr, index) => {
+      return this.createWheel(index);
+    });
+
+    return arr;
   }
 }

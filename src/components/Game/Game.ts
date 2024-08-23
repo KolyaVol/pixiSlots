@@ -6,7 +6,10 @@ export default class Game {
   wheels: Array<IWheel> = [];
   wheelsItems: Array<Array<number>> = [
     [1, 2, 3, 4, 5, 6, 7],
-    [1, 2, 3, 4, 5, 6, 7],
+    // [2, 2, 2, 2, 2, 2, 2],
+    // [1, 2, 3, 4, 5, 6, 7],
+    // [3, 3, 3, 3, 3, 3, 3],
+    // [1, 2, 3, 4, 5, 6, 7],
   ];
   #pixiApp: null | Application = null;
   constructor() {}
@@ -20,11 +23,10 @@ export default class Game {
 
     const assets = await Assets.loadBundle("items");
 
-    this.#pixiApp.resizeTo;
     if (this.#pixiApp) {
       document.body.appendChild(this.#pixiApp.canvas);
     }
-    this.createWheel();
+    this.createWheels();
     // const cherry = await Assets.load("cherry");
     // const sprite = new Sprite(cherry);
     // this.#pixiApp.stage.addChild(sprite);
@@ -34,19 +36,23 @@ export default class Game {
     // this.#pixiApp.stage.addChild(gr);
 
     this.#pixiApp.ticker.add(() => {
+      // console.log(this.wheels);
+
       this.wheels.forEach((wheel) => wheel.update());
     });
     this.#pixiApp.ticker.start();
   }
 
-  async createWheel() {
+  async createWheels() {
     let wheelFactory: WheelFactory | null = null;
     if (this.#pixiApp) {
       wheelFactory = new WheelFactory(this.#pixiApp, this.wheelsItems);
     }
-    const wheel = wheelFactory?.createWheel();
-    if (wheel) {
-      this.wheels.push(wheel);
+    const wheelsArr = wheelFactory?.createWheels();
+    if (wheelsArr) {
+      console.log(wheelsArr);
+
+      this.wheels = wheelsArr;
     }
   }
 }

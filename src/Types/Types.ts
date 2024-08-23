@@ -6,6 +6,7 @@ export interface IWheelView extends Container {
 }
 
 export interface IWheel extends Container {
+  rndmSpeed: number;
   drawWheel(): void;
   update(): void;
 }
@@ -14,5 +15,6 @@ export interface IWheelFactory {
   app: null | Application;
   wheelsItems: Array<Array<number>>;
 
-  createWheel(): IWheel;
+  createWheel(x: number): IWheel;
+  createWheels(): Array<IWheel>;
 }

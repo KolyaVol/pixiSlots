@@ -19,57 +19,9 @@ export default class WheelView extends Container implements IWheelView {
     const sprite = new Sprite(texture);
     sprite.x = offsetX;
     sprite.y = offsetY;
+
     this.rootNode?.addChild(sprite);
   }
-
-  // async drawCherry() {
-  //   const cherry = await Assets.load("cherry");
-  //   const sprite = new Sprite(cherry);
-
-  //   this.#rootNode?.addChild(sprite);
-  // }
-
-  // async drawDiamond() {
-  //   const cherry = await Assets.load("diamond");
-  //   const sprite = new Sprite(cherry);
-
-  //   this.#rootNode?.addChild(sprite);
-  // }
-
-  // async drawGoldBars() {
-  //   const cherry = await Assets.load("goldBars");
-  //   const sprite = new Sprite(cherry);
-  //   sprite.y = offsetY;
-  //   this.#rootNode?.addChild(sprite);
-  // }
-
-  // async drawGrape() {
-  //   const cherry = await Assets.load("grape");
-  //   const sprite = new Sprite(cherry);
-  //   sprite.y = offsetY;
-  //   this.#rootNode?.addChild(sprite);
-  // }
-
-  // async drawLemon() {
-  //   const cherry = await Assets.load("lemon");
-  //   const sprite = new Sprite(cherry);
-  //   sprite.y = offsetY;
-  //   this.#rootNode?.addChild(sprite);
-  // }
-
-  // async drawWatermelon() {
-  //   const cherry = await Assets.load("watermelon");
-  //   const sprite = new Sprite(cherry);
-  //   sprite.y = offsetY;
-  //   this.#rootNode?.addChild(sprite);
-  // }
-
-  // async drawWild(offsetY: number) {
-  //   const cherry = await Assets.load("wild");
-  //   const sprite = new Sprite(cherry);
-  //   sprite.y = offsetY;
-  //   this.#rootNode?.addChild(sprite);
-  // }
 
   async fillCell(el: number, offsetX: number, offsetY: number) {
     switch (el) {
