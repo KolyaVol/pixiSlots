@@ -4,11 +4,11 @@ import "./style.css";
 
 Assets.addBundle("items", {
   cherry: "/cherry.png",
-  diamond: "/diamond.png",
-  goldBars: "/goldBars.png",
   grape: "/grape.png",
   lemon: "/lemon.png",
   watermelon: "/watermelon.png",
+  goldBars: "/goldBars.png",
+  diamond: "/diamond.png",
   wild: "/wild.png",
 });
 

@@ -36,8 +36,6 @@ export default class Game {
     // this.#pixiApp.stage.addChild(gr);
 
     this.#pixiApp.ticker.add(() => {
-      // console.log(this.wheels);
-
       this.wheels.forEach((wheel) => wheel.update());
     });
     this.#pixiApp.ticker.start();
